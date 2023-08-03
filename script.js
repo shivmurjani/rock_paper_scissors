@@ -3,14 +3,14 @@ function getuserChoice(){
     let choice = prompt("Enter your move. ROCK/PAPER/SCISSORS").toLowerCase();
     while(choice!== "rock"&&choice!=="paper"&&choice!=="scissor"){
         alert("invalid input, try again");
-        x = getuserChoice();
+        return getuserChoice();
     }
     return choice;
 }
 
 function getcomputerChoice(){
     const choices = ["rock","paper","scissor"];
-    botchoice = choices[Math.floor(Math.random()*3)];
+    let botchoice = choices[Math.floor(Math.random()*3)];
     return botchoice;
 }
 
