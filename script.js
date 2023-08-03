@@ -1,7 +1,7 @@
 
 //get user input
 function getuserChoice(){
-    let choice = prompt("Enter your move. ROCK/PAPER/SCISSORS").toLowerCase();
+    let choice = prompt("Enter your move.____ROCK/PAPER/SCISSOR_____").toLowerCase();
     while(choice!== "rock"&&choice!=="paper"&&choice!=="scissor"){
         alert("invalid input, try again");
         return getuserChoice(); //recursively calls until input is valid
@@ -70,8 +70,8 @@ function gameState(){
         }
         else if(getResult(x,y)==1){
             userScore++;
-            alert(`YOU WIN ${yourName}!! ${x} beats ${y}, 
-            YOUR Score is ${userScore} and CPU score is ${computerScore}`);
+            alert(`YOU WIN ${yourName}!! ${x} beats ${y}`);
+            
             alert(`YOUR Score is ${userScore} and CPU score is ${computerScore}`);
         }
         else{
