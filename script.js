@@ -1,4 +1,5 @@
 
+//get user input
 function getuserChoice(){
     let choice = prompt("Enter your move. ROCK/PAPER/SCISSORS").toLowerCase();
     while(choice!== "rock"&&choice!=="paper"&&choice!=="scissor"){
@@ -7,7 +8,7 @@ function getuserChoice(){
     }
     return choice;//returns valid input
 }
-
+//get computer input
 function getcomputerChoice(){
     const choices = ["rock","paper","scissor"];
     let botchoice = choices[Math.floor(Math.random()*3)];
@@ -36,7 +37,7 @@ function getcomputerChoice(){
 
 
 //deciding winner USING A matrix!
-function giveResult(choice_a,choice_b){
+function getResult(choice_a,choice_b){
     const choices = {rock:0,paper:1,scissor:2};
     const resultMatrix= [[0,-1,1],[1,0,-1],[-1,1,0]]; //9 possible outcomes
     const userChoice = choices[choice_a];
@@ -44,14 +45,37 @@ function giveResult(choice_a,choice_b){
 
     //CONDITIONS TO DECIDE----- VICTORY == 1, LOSS == -1, TIE == 0
     if(resultMatrix[userChoice][cpuChoice]==0){
-        return "ITS A TIE";
+        return 0;
     }
     else if(resultMatrix[userChoice][cpuChoice]==1){
-        return "YOU WIN!!";
+        return 1;
     }
     else{
-        return "YOU LOSE :(";
+        return -1;
     }
 
 }
 
+function gameState(){
+    var computerScore = 0;
+    var userScore = 0;
+    alert("Are you ready to play?");
+    while(computerScore!=5 && userScore!=5){
+        let x = getuserChoice();
+        let y = getcomputerChoice();
+        if(getResult(x,y)==0){
+            alert(`ITS A TIE, user score is ${userScore} and cpu score is ${computerScore}`);
+        }
+        else if(getResult(x,y)==1){
+            userScore++;
+            alert(`YOU WIN!! ${x} beats ${y}, User Score is ${userScore} and CPU score is ${computerScore}`);
+        }
+        else{
+            computerScore++;
+            alert(`YOU LOSE!! ${y} beats ${x}, User Score is ${userScore} and CPU score is ${computerScore}`); 
+        }
+    }
+
+}
+
+gameState();
