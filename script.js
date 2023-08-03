@@ -60,19 +60,24 @@ function gameState(){
     var computerScore = 0;
     var userScore = 0;
     alert("Are you ready to play?");
+    var yourName=prompt("Enter your name if you'd like", "BOB");
     while(computerScore!=5 && userScore!=5){
         let x = getuserChoice();
         let y = getcomputerChoice();
         if(getResult(x,y)==0){
-            alert(`ITS A TIE, user score is ${userScore} and cpu score is ${computerScore}`);
+            alert(`ITS A TIE ${yourName}!`);
+            alert(`YOUR Score is ${userScore} and CPU score is ${computerScore}`);
         }
         else if(getResult(x,y)==1){
             userScore++;
-            alert(`YOU WIN!! ${x} beats ${y}, User Score is ${userScore} and CPU score is ${computerScore}`);
+            alert(`YOU WIN ${yourName}!! ${x} beats ${y}, 
+            YOUR Score is ${userScore} and CPU score is ${computerScore}`);
+            alert(`YOUR Score is ${userScore} and CPU score is ${computerScore}`);
         }
         else{
             computerScore++;
-            alert(`YOU LOSE!! ${y} beats ${x}, User Score is ${userScore} and CPU score is ${computerScore}`); 
+            alert(`YOU LOSE ${yourName}!! ${y} beats ${x}`); 
+            alert(`YOUR Score is ${userScore} and CPU score is ${computerScore}`);
         }
     }
 
