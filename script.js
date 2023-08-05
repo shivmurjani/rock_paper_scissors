@@ -85,20 +85,69 @@
 // }
 
 // gameState();
-const r = document.querySelector('#rock');
-const p = document.querySelector('#paper');
-const s = document.querySelector('#scissor');
-const text = document.querySelector('.dialogue');
+// const r = document.querySelector('#rock');
+// const p = document.querySelector('#paper');
+// const s = document.querySelector('#scissor');
+// const text = document.querySelector('.dialogue');
 
-function updateScore(e){
-    text.textContent='hello world';
+// function updateScore(e){
+//     text.textContent='hello world';
+// }
+// function updateWin(e){
+//     text.textContent='hello world, you win!';
+// }
+// function updateLoss(e){
+//     text.textContent='hello world, you lose!';
+// }
+// r.addEventListener('click',updateScore);
+// p.addEventListener('click',updateWin);
+// s.addEventListener('click',updateLoss);
+
+
+const btnRock = document.querySelector('#rock');
+const btnPaper = document.querySelector('#paper');
+const btnScissor = document.querySelector('#scissor');
+const display = document.querySelector(".dialogue");
+
+btnRock.value = 0;
+btnPaper.value = 1;
+btnScissor.value = 2;
+
+btnRock.addEventListener('click',compareInput);
+btnPaper.addEventListener('click',compareInput);
+btnScissor.addEventListener('click',compareInput);
+
+function compareInput(e){
+   const turn = this.value;
+   const cpuTurn = getcomputerChoice();
+   const decision = getResult(turn,cpuTurn);
+   console.log(e,decision);
+
 }
-function updateWin(e){
-    text.textContent='hello world, you win!';
+
+
+
+function getResult(choice_a,choice_b){
+    const choices = {rock:0,paper:1,scissor:2};
+    const resultMatrix= [[0,-1,1],[1,0,-1],[-1,1,0]]; //9 possible outcomes
+    const userChoice = choice_a;
+    const cpuChoice = choices[choice_b];
+
+    //CONDITIONS TO DECIDE----- VICTORY == 1, LOSS == -1, TIE == 0
+    if(resultMatrix[userChoice][cpuChoice]==0){
+        return 0;
+    }
+    else if(resultMatrix[userChoice][cpuChoice]==1){
+        return 1;
+    }
+    else{
+        return -1;
+    }
+
 }
-function updateLoss(e){
-    text.textContent='hello world, you lose!';
+
+function getcomputerChoice(){
+    const choices = ["rock","paper","scissor"];
+    let botchoice = choices[Math.floor(Math.random()*3)];
+    return botchoice; //random choice is returned
 }
-r.addEventListener('click',updateScore);
-p.addEventListener('click',updateWin);
-s.addEventListener('click',updateLoss);

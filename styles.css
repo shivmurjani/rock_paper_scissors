@@ -36,11 +36,12 @@ button{
 }
 button:hover{
     background-color: rgb(239, 243, 0); 
+    opacity: 1;
 }
 
 
 .header,.score-tracker,.dialogue{
-    border: 2px solid red;
+
     color: yellow;
 }
 
