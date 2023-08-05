@@ -87,3 +87,10 @@
 // gameState();
 const s = document.querySelector('#rock');
 s.onclick = ()  => alert('hello world!');
+
+const Score = document.querySelector('.score-tracker');
+
+function updateScore(e){
+    Score.textContent='hello world';
+}
+s.addEventListener('click',updateScore);
