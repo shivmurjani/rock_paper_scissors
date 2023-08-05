@@ -85,29 +85,12 @@
 // }
 
 // gameState();
-// const r = document.querySelector('#rock');
-// const p = document.querySelector('#paper');
-// const s = document.querySelector('#scissor');
-// const text = document.querySelector('.dialogue');
-
-// function updateScore(e){
-//     text.textContent='hello world';
-// }
-// function updateWin(e){
-//     text.textContent='hello world, you win!';
-// }
-// function updateLoss(e){
-//     text.textContent='hello world, you lose!';
-// }
-// r.addEventListener('click',updateScore);
-// p.addEventListener('click',updateWin);
-// s.addEventListener('click',updateLoss);
-
 
 const btnRock = document.querySelector('#rock');
 const btnPaper = document.querySelector('#paper');
 const btnScissor = document.querySelector('#scissor');
 const display = document.querySelector(".dialogue");
+const counter = document.querySelector(".score-tracker");
 
 btnRock.value = 0;
 btnPaper.value = 1;
@@ -121,10 +104,11 @@ function compareInput(e){
    const turn = this.value;
    const cpuTurn = getcomputerChoice();
    const decision = getResult(turn,cpuTurn);
-   console.log(e,decision);
-
+   const playermove = this.id;
+   console.log(turn,cpuTurn,decision,playermove)
+    gameState(decision,playermove,cpuTurn);
+   
 }
-
 
 
 function getResult(choice_a,choice_b){
@@ -150,4 +134,27 @@ function getcomputerChoice(){
     const choices = ["rock","paper","scissor"];
     let botchoice = choices[Math.floor(Math.random()*3)];
     return botchoice; //random choice is returned
+}
+
+function gameState(decision,playermove,computermove){
+    var computerScore = 0;
+    var userScore = 0;
+    var yourName=prompt("Enter your name if you'd like", "BOB");
+    while(computerScore!=5 && userScore!=5){
+        if(decision==0){
+            display.textContent=`ITS A TIE ${yourName}!`;
+            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
+        }
+        else if(decision==1){
+            userScore++;
+            display.textContent=`YOU WIN ${yourName}!! ${playermove} beats ${computermove}`;
+            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
+        }
+        else{
+            computerScore++;
+            display.textContent=`YOU LOSE ${yourName}!! ${computermove} beats ${playermove}`;
+            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
+        }
+    }
+
 }
