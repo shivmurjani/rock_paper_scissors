@@ -39,7 +39,7 @@ button:hover{
 }
 
 
-.header,.score-tracker{
+.header,.score-tracker,.dialogue{
     border: 2px solid red;
     color: yellow;
 }
@@ -58,7 +58,11 @@ button:hover{
     font-size: 20px;
 
 }
-
+.dialogue{
+    padding: 40px;
+    text-align: center;
+    font-size: 20px;
+}
 .button{
     margin-top: 15%;
     display: flex;

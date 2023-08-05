@@ -85,12 +85,20 @@
 // }
 
 // gameState();
-const s = document.querySelector('#rock');
-s.onclick = ()  => alert('hello world!');
-
-const Score = document.querySelector('.score-tracker');
+const r = document.querySelector('#rock');
+const p = document.querySelector('#paper');
+const s = document.querySelector('#scissor');
+const text = document.querySelector('.dialogue');
 
 function updateScore(e){
-    Score.textContent='hello world';
+    text.textContent='hello world';
 }
-s.addEventListener('click',updateScore);
+function updateWin(e){
+    text.textContent='hello world, you win!';
+}
+function updateLoss(e){
+    text.textContent='hello world, you lose!';
+}
+r.addEventListener('click',updateScore);
+p.addEventListener('click',updateWin);
+s.addEventListener('click',updateLoss);
