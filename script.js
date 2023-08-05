@@ -136,10 +136,10 @@ function getcomputerChoice(){
     return botchoice; //random choice is returned
 }
 
-function gameState(decision,playermove,computermove){
+async function gameState(decision,playermove,computermove){
     var computerScore = 0;
     var userScore = 0;
-    var yourName=prompt("Enter your name if you'd like", "BOB");
+    var yourName=await prompt("Enter your name if you'd like", "BOB");
     while(computerScore!=5 && userScore!=5){
         if(decision==0){
             display.textContent=`ITS A TIE ${yourName}!`;
