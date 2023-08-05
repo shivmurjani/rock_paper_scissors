@@ -6,17 +6,30 @@
     background-size:cover;
 }   
 img{
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 70px;
 }
 body{
     background-image: url(./images/wallpaperflare.com_wallpaper.jpg);
 }
+button{
+    opacity: 0.7;
+    background-color: rgb(238, 132, 224);
+    color: black;
+    font-size: 30px;
+    border-style: none;
+    transition: 0.05s;
+    
+}
+button:hover{
+    background-color: rgb(245, 78, 231); 
+}
 
 
 .header,.score-tracker{
     border: 2px solid red;
+    color: yellow;
 }
 
 
@@ -57,6 +70,10 @@ body{
     align-content:center;
     margin-top: 20px;
     width: 200px;
-    padding: 10px;
+    padding: 0px;
     border-radius:100px;
+}
+.container img{
+    opacity: 0.75;
+    border: 5px solid black;
 }

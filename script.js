@@ -1,4 +1,5 @@
 
+
 // //get user input
 // function getuserChoice(){
 //     let choice = prompt("Enter your move.____ROCK/PAPER/SCISSOR_____").toLowerCase();
@@ -84,3 +85,5 @@
 // }
 
 // gameState();
+const s = document.querySelector('#rock');
+s.onclick = ()  => alert('hello world!');
