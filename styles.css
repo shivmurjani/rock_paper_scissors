@@ -56,7 +56,7 @@ button:hover{
 .score-tracker{
     padding: 40px;
     text-align: center;
-    font-size: 35px;
+    font-size: 70px;
 /*  */
 }
 .dialogue{
@@ -93,7 +93,7 @@ button:hover{
 }
 
 .blink {
-    animation: blink 2s infinite;
+    animation: blink 1s steps(1, end) infinite;
   }
   
   @keyframes blink {

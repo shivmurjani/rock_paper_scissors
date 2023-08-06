@@ -173,8 +173,8 @@ function updatecpuScore(){
 function displayResult(decision,playermove,cpuTurn){
     if(decision==0){
         display.textContent=`ITS A TIE !`;
-        display.setAttribute('style','color:pink; font-size:35px;');
-        counter.setAttribute('style','color:pink; font-size:40px;');
+        display.setAttribute('style','color:pink; font-size:40px;');
+        counter.setAttribute('style','color:pink; font-size:70px;');
     }
     else if(decision==1){
         display.textContent=`YOU WIN!!! ${playermove} beats ${cpuTurn}`;
