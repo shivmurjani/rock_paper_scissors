@@ -131,27 +131,23 @@ function compareInput(e){
 }   
 
 
-
-
-
-
-
-
-
-
 function updateplayerScore(){
     //check if player score is 5, if it is, display winner, reset count to zero
     // if decision is 1, update playerScore
     if(playerScore+1 == 5){
-        display.textContent = 'user is the winner, game resets';
-        counter.textContent = `USER ${playerScore+1}:${cpuScore} CPU`
+        display.textContent = 'User is the winner, Game Resets!!';
+        display.setAttribute('style','color:green; font-size:40px;');
+        counter.setAttribute('style','color:green; font-size:70px;');
+        counter.textContent = `USER ${playerScore+1}:${cpuScore} CPU`;
         playerScore = 0;
         cpuScore = 0;
-        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`;
+        
     }
     else{
         playerScore+=1
         counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+        counter.setAttribute('style','color:yellow; font-size:70px');
     }
     
 }
@@ -159,31 +155,36 @@ function updatecpuScore(){
       //check if cpu score is 5, if it is, display winner, reset count to zero
     // if decision is -1, update cpuScore
     if(cpuScore+1 == 5){
-        display.textContent = 'cpu is the winner, game resets';
-        counter.textContent = `USER ${playerScore}:${cpuScore+1} CPU`
+        display.textContent = 'CPU is the winner, Game Resets!';
+
+        counter.textContent = `USER ${playerScore}:${cpuScore+1} CPU`;
         playerScore = 0;
         cpuScore = 0;
-        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+        counter.textContent = `GET GOOD LOL`;
 
     }
     else{
         cpuScore+=1
-        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`;
+        counter.setAttribute('style','color:red; font-size:70px');
     }
 }
 
 function displayResult(decision,playermove,cpuTurn){
     if(decision==0){
         display.textContent=`ITS A TIE !`;
+        display.setAttribute('style','color:pink; font-size:35px;');
+        counter.setAttribute('style','color:pink; font-size:40px;');
     }
     else if(decision==1){
-        
-        display.textContent=`YOU WIN !! ${playermove} beats ${cpuTurn}`;
+        display.textContent=`YOU WIN!!! ${playermove} beats ${cpuTurn}`;
+        display.setAttribute('style','color:yellow; font-size:35px;');
         updateplayerScore();
     }
     else{
         
         display.textContent=`YOU LOSE!! ${cpuTurn} beats ${playermove}`;
+        display.setAttribute('style','color:red; font-size:35px;');
         updatecpuScore();
     }
 }
