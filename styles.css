@@ -6,6 +6,7 @@
     /* background-image: url("./images/background.jpeg"); */
     background-size:cover;
     font-family: 'Press Start 2P', cursive;
+    overflow-y: hidden;
 }   
 img{
     height: 200px;
@@ -73,7 +74,7 @@ button:hover{
 }
 .container{
     padding: 5% 15%;
-    margin-top: 100px;
+    margin-top: 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
