@@ -86,6 +86,25 @@
 
 // gameState();
 
+
+
+// function compareInput(e){
+//    const turn = this.value; //0 1 2
+//    const cpuTurn = getcomputerChoice();// r p c
+//    const decision = getResult(turn,cpuTurn); // 0 1 -1
+//    const playermove = this.id; //r p c
+
+   
+// }
+
+
+
+
+
+
+let playerScore = 0;
+let cpuScore = 0;
+
 const btnRock = document.querySelector('#rock');
 const btnPaper = document.querySelector('#paper');
 const btnScissor = document.querySelector('#scissor');
@@ -101,15 +120,79 @@ btnPaper.addEventListener('click',compareInput);
 btnScissor.addEventListener('click',compareInput);
 
 function compareInput(e){
-   const turn = this.value;
-   const cpuTurn = getcomputerChoice();
-   const decision = getResult(turn,cpuTurn);
-   const playermove = this.id;
-   console.log(turn,cpuTurn,decision,playermove)
-    gameState(decision,playermove,cpuTurn);
-   
+    const turn = this.value; //0 1 2
+    const cpuTurn = getcomputerChoice();// r p c
+    const decision = getResult(turn,cpuTurn); // 0 1 -1
+    const playermove = this.id; //r p c
+    // updateplayerScore(decision);
+    // updatecpuScore(decision);
+    console.log(decision,playermove,cpuTurn);
+    displayResult(decision,playermove,cpuTurn);
+}   
+
+
+
+
+
+
+
+
+
+
+function updateplayerScore(){
+    //check if player score is 5, if it is, display winner, reset count to zero
+    // if decision is 1, update playerScore
+    if(playerScore+1 == 5){
+        display.textContent = 'user is the winner, game resets';
+        counter.textContent = `USER ${playerScore+1}:${cpuScore} CPU`
+        playerScore = 0;
+        cpuScore = 0;
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+    }
+    else{
+        playerScore+=1
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+    }
+    
+}
+function updatecpuScore(){
+      //check if cpu score is 5, if it is, display winner, reset count to zero
+    // if decision is -1, update cpuScore
+    if(cpuScore+1 == 5){
+        display.textContent = 'cpu is the winner, game resets';
+        counter.textContent = `USER ${playerScore}:${cpuScore+1} CPU`
+        playerScore = 0;
+        cpuScore = 0;
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+
+    }
+    else{
+        cpuScore+=1
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`
+    }
 }
 
+function displayResult(decision,playermove,cpuTurn){
+    if(decision==0){
+        display.textContent=`ITS A TIE !`;
+    }
+    else if(decision==1){
+        
+        display.textContent=`YOU WIN !! ${playermove} beats ${cpuTurn}`;
+        updateplayerScore();
+    }
+    else{
+        
+        display.textContent=`YOU LOSE!! ${cpuTurn} beats ${playermove}`;
+        updatecpuScore();
+    }
+}
+
+function getcomputerChoice(){
+    const choices = ["rock","paper","scissor"];
+    let botchoice = choices[Math.floor(Math.random()*3)];
+    return botchoice; //random choice is returned
+}
 
 function getResult(choice_a,choice_b){
     const choices = {rock:0,paper:1,scissor:2};
@@ -130,31 +213,8 @@ function getResult(choice_a,choice_b){
 
 }
 
-function getcomputerChoice(){
-    const choices = ["rock","paper","scissor"];
-    let botchoice = choices[Math.floor(Math.random()*3)];
-    return botchoice; //random choice is returned
-}
 
-async function gameState(decision,playermove,computermove){
-    var computerScore = 0;
-    var userScore = 0;
-    var yourName=await prompt("Enter your name if you'd like", "BOB");
-    while(computerScore!=5 && userScore!=5){
-        if(decision==0){
-            display.textContent=`ITS A TIE ${yourName}!`;
-            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
-        }
-        else if(decision==1){
-            userScore++;
-            display.textContent=`YOU WIN ${yourName}!! ${playermove} beats ${computermove}`;
-            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
-        }
-        else{
-            computerScore++;
-            display.textContent=`YOU LOSE ${yourName}!! ${computermove} beats ${playermove}`;
-            counter.textContent=`USER ${userScore}:${computerScore}CPU`;
-        }
-    }
 
-}
+
+
+
