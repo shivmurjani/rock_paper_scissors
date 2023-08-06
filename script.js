@@ -138,10 +138,10 @@ function updateplayerScore(){
         display.textContent = 'User is the winner, Game Resets!!';
         display.setAttribute('style','color:green; font-size:40px;');
         counter.setAttribute('style','color:green; font-size:70px;');
-        counter.textContent = `USER ${playerScore+1}:${cpuScore} CPU`;
+        
         playerScore = 0;
         cpuScore = 0;
-        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`;
+        counter.textContent = `Well done, you beat Javascript`;
         
     }
     else{
@@ -155,8 +155,8 @@ function updatecpuScore(){
       //check if cpu score is 5, if it is, display winner, reset count to zero
     // if decision is -1, update cpuScore
     if(cpuScore+1 == 5){
+        counter.setAttribute('style','color:red; font-size:70px');
         display.textContent = 'CPU is the winner, Game Resets!';
-
         counter.textContent = `USER ${playerScore}:${cpuScore+1} CPU`;
         playerScore = 0;
         cpuScore = 0;
@@ -174,7 +174,9 @@ function displayResult(decision,playermove,cpuTurn){
     if(decision==0){
         display.textContent=`ITS A TIE !`;
         display.setAttribute('style','color:pink; font-size:40px;');
+        counter.textContent = `USER ${playerScore}:${cpuScore} CPU`;
         counter.setAttribute('style','color:pink; font-size:70px;');
+        
     }
     else if(decision==1){
         display.textContent=`YOU WIN!!! ${playermove} beats ${cpuTurn}`;
@@ -215,6 +217,16 @@ function getResult(choice_a,choice_b){
 }
 
 
+
+btnRock.addEventListener('click',removeBlink);
+btnPaper.addEventListener('click',removeBlink);
+btnScissor.addEventListener('click',removeBlink);
+
+function removeBlink(e){
+    btnPaper.classList.remove('blink');
+    btnRock.classList.remove('blink');
+    btnScissor.classList.remove('blink');
+}
 
 
 

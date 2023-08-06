@@ -95,6 +95,9 @@ button:hover{
 .blink {
     animation: blink 1s steps(1, end) infinite;
   }
+.blinkHeader{
+    animation: blink 1s infinite;
+} 
   
   @keyframes blink {
     0% {
@@ -107,3 +110,6 @@ button:hover{
       opacity: 1;
     }
   }
+
+
+
